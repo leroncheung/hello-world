@@ -1,13 +1,7 @@
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
-    cout << "Hello";
-
-    cout << "CS Code" << endl;
-
-    cout << "end" << endl;
+    std::cout << "Hello world!" << std::endl;
     return 0;
 }
