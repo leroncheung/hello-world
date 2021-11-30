@@ -8,7 +8,8 @@
                 "-fdiagnostics-color=always",
                 "",
                 "-g",
-                "${file}",
+                // "${file}",
+                "${workspaceFolder}\\Cpp_Exercise\\class_test\\*.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
