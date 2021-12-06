@@ -9,7 +9,7 @@
                 "",
                 "-g",
                 // "${file}",
-                "${workspaceFolder}\\Cpp_Exercise\\class_test\\*.cpp",
+                "${workspaceFolder}\\Cpp_Exercise\\string_h_realize\\*.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
