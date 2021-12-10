@@ -29,7 +29,8 @@ void Derived::func() {
 
 int main() {
 	Base *p = new Derived();
-//	p->func();
-	
-	return 0;
+	//	p->func();
+	// 若派生类没有实现基类的虚函数，则基类指针即便指向派生类对象，也无法使用多态（派生类没有该虚函数）
+
+		return 0;
 }

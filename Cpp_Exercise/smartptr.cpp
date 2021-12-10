@@ -1,5 +1,6 @@
 #include <iostream>
 
+// 以shared_ptr为原型
 template <class T>
 class SmartPtr {
 public:

@@ -21,8 +21,7 @@ int main()
     cout << os.str() << endl;
 
     ostringstream os1;
-    // ostream不能拷贝，若希望传递给bind一个对象，
-    // 而不拷贝它，就必须使用标准库提供的ref函数
+    // ostream涓嶈兘鎷疯礉锛岃嫢甯屾湜浼犻�掔粰bind涓�涓璞★紝鑰屼笉鎷疯礉瀹冿紝鍒欏繀椤讳娇鐢ㄦ爣鍑嗗簱鎻愪緵鐨剅ef鍑芥暟
     for_each(words.begin(), words.end(), bind(print, ref(os1), _1, c));
     cout << os1.str() << endl;
 }
