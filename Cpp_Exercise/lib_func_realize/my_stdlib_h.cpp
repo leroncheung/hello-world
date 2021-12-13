@@ -12,6 +12,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Solution
 {
 public:
@@ -42,6 +44,6 @@ public:
 int main() {
     string str("  -123bd");
     Solution sol;
-    std::cout << sol.myAtoi(str) << std::endl;
+    cout << sol.myAtoi(str) << endl;
     return 0;
 }
