@@ -1,7 +1,7 @@
 /**
  * @file my_string_h.cpp
  * @author leroncheung
- * @brief functions of file<string.h>: memcpy, memmove, strlen, strcpy, strncpy
+ * @brief functions of file<string.h>: strcmp, memcpy, memmove, strlen, strcpy, strncpy
  * @version 0.1
  * @date 2021-12-06
  * 
@@ -10,6 +10,22 @@
  */
 
 #include <iostream>
+
+// reference by linux core @Linus Torvalds
+int MyStrCmp(const char *str1, const char* str2) {
+    unsigned char c1, c2;
+    while (true) {
+        c1 = *str1++;
+        c2 = *str2++;
+        if (c1 != c2) {
+            return (c1 < c2 )? -1 : 1;
+        }
+        if (!c1) {
+            break;
+        }
+    }
+    return 0;
+}
 
 // 未考虑内存重叠场景 
 void *MyMemcpy(void *dest, const void *src, size_t n)
@@ -84,6 +100,10 @@ size_t MyStrlen(const char *str)
 
 int main()
 {
+    char str1[] = "abs";
+    char str2[] = "abc";
+    std::cout << MyStrCmp(str1, str2) << std::endl;
+
     // char src[] = {'a', 'b', 's'};
     // void *dest = (void *)malloc(sizeof(char) * 5);
 
@@ -91,7 +111,7 @@ int main()
     char dest[5];
     // auto dst = (char *)MyMemcpy(dest, src, 2);
     // cout << dst << endl;
-    std::cout << MyStrlen(src);
+    // std::cout << MyStrlen(src);
 
     return 0;
 }
