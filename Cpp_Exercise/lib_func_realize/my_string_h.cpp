@@ -27,7 +27,7 @@ int MyStrCmp(const char *str1, const char* str2) {
     return 0;
 }
 
-// 未考虑内存重叠场景 
+// 未考虑内存重叠场景
 void *MyMemcpy(void *dest, const void *src, size_t n)
 {
     if (dest == nullptr || src == nullptr) {
@@ -103,15 +103,23 @@ int main()
     char str1[] = "abs";
     char str2[] = "abc";
     std::cout << MyStrCmp(str1, str2) << std::endl;
+    std::cout << MyStrlen(str1) << std::endl;
+
+    char str3[100];
+    MyMemcpy(str3, str1, 2);
+    std::cout << str3 << std::endl;
+
+    MyMemmove(str3, str2, 2);
+    std::cout << str3 << std::endl;
+
+    MyStrcpy(str3, str1);
+    std::cout << str3 << std::endl;
+
+    MyStrncpy(str3, str1, 3);
+    std::cout << str3 << std::endl;
 
     // char src[] = {'a', 'b', 's'};
     // void *dest = (void *)malloc(sizeof(char) * 5);
-
-    char src[] = "abas";
-    char dest[5];
-    // auto dst = (char *)MyMemcpy(dest, src, 2);
-    // cout << dst << endl;
-    // std::cout << MyStrlen(src);
 
     return 0;
 }
