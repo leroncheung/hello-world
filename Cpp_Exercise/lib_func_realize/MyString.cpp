@@ -11,7 +11,7 @@ public:
         ss[0] = 0;
     }
     ~MyString() {
-        delete[] ss;
+        delete[] ss;    // 处理指针释放，注意不能定义为delete ss;
     }
 
     MyString(const char *s) {
