@@ -1,0 +1,165 @@
+//指针有两个属性：指向变量/对象的地址和长度，但是指针只存储地址，长度则取决于指针的类型，编译器根据指针的类型从指针指向的地址向后寻址。
+指针类型不同则寻址范围也不同。int*从指定地址向后寻找4字节作为变量的存储单元，double*从指定地址向后寻找8字节作为变量的存储单元。
+void*是一种特别的指针，它没有类型，或者说这个类型不能判断出指向对象的长度。任何对象都可以赋值给void*，而且不需要转换，只获得变量/对象地址而不获得大小。
+void指针赋值给其他类型的指针时需要进行转换。
+void指针不能复引用，因为void指针只知道，指向变量/对象的起始地址，而不知道指向变量/对象的大小，所以无法正确引用，使用前必须要进行转换。
+void指针不能参与运算(++,--)，除非进行转换。
+
+#include <stdio.h>
+#include <cstring>
+#include <cassert>
+
+struct M
+{
+	char c:4;
+};
+char * strcpy_1(char *str1, const char *str2)
+{
+	assert((str1 != NULL) && (str2 != NULL));
+	char *address = str1;
+	while((*str1++ = *str2++) != '\0');
+	return address;
+}
+
+void strcpy_2(char *str1, const char *str2)
+{
+	if ('\0' == *str2)
+	{
+		*str1 = '\0';
+		return;
+	}
+	*str1++ = *str2++;
+	strcpy_2(str1, str2);
+}
+
+int strlen_1(char *str)
+{
+	int length = 0;
+	while(*str++ != '\0')
+		length++;
+	return length;
+}
+
+int strlen_2(char *str)
+{
+	if ('\0' == *str)
+		return 0;
+	else
+		return strlen_2(++str)+1;
+}
+
+int count_1(int n)
+{
+	int count = 0;
+	while(n)
+	{
+		n &= (n-1);
+		count++;
+	}
+	return count;
+}
+
+node * searchMid(node *head)
+{
+	node *temp, *fast, *slow;
+	assert(head != NULL);
+	fast = slow = temp = head;
+	while(!(temp= fast->next) && !(temp->next))
+	{
+		slow = slwo->next;
+		fast = temp->next;
+	}
+	return slow;
+}
+
+bool research_cycle(list *head)
+{
+	list *p1, *p2;
+	bool result = false;
+	assert(head != NULL && head->next != NULL && head->next->next != NULL);
+	p1 = head;
+	p2 = p1->next->next;
+	while((p1 != NULL) && (p2 != NULL))
+	{
+		if (p1 == p2)
+		{
+			result = true;
+			break;
+		}
+		else
+		{
+			if (p2->next == NULL)
+			{
+				result = false;
+				break;
+			}
+			p1 = p1->next;
+			p2 = (p2->next)->next;
+		}
+	}
+	return result;
+}
+
+list *reverse_2(list *old_list, list *new_head = NULL)
+{
+	list *p_next = old_list->next;
+	old_list->next = new_head;
+	new_head = old_list;
+	return (p_next == NULL ? new_head : reverse_2(p_next, new_head));
+}
+
+//void *memcpy(void *dst, void *src, size_t size)
+// if copying takes place between objects that overlap, the behavior is undefined.
+void *memcpy_1(void *dst, void *src, size_t size)
+{
+	if (NULL == dst || NULL == src)		return NULL;
+	char *pdst, *psrc;
+	pdst = (char*)dst;
+	psrc = (char*)src;
+	if (src < dst && psrc + size > pdst)    // objects overlapped
+	{
+		pdst = pdst + size - 1;
+		psrc = psrc + size - 1;
+		while(size--)
+		{
+			*pdst-- = *psrc--;
+		}
+	}
+	else
+	{
+		while(size--)
+		{
+			*pdst++ = *psrc++;
+		}
+	}
+	return dst;
+}
+
+int main()
+{
+	/*
+	int val = 1;
+	char *p = (char *)&val;
+	if (1 == *p)
+		printf("big\n");
+	
+	struct M m;
+	m.c = 1;
+	//if (1 == m.c)
+	if (check())
+		printf("Big\n");
+	else
+		printf("little\n");
+	*/
+	char *str = "hello";
+	char str2[100];
+	char str3[100];
+	int n = strlen_1(str);
+	int m = strlen_2(str);
+	//printf("len = %d  %d\n", n, m);
+	strcpy_1(str2, str);
+	strcpy_2(str3, str);
+	printf("%s   %s\n", str2, str3);
+	return 0;
+}
+
