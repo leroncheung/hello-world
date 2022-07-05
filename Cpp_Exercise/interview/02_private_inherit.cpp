@@ -34,7 +34,7 @@ class Child1 : public Parent
 public:
     int GetPub() { return m_nPub; };
     int GetPtd() { return m_nPtd; };
-    // int GetPrt(){return m nPrt;};
+    // int GetPrt(){return m_nPrt;};
     // A
 };
 

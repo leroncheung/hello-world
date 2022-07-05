@@ -13,8 +13,7 @@
 
 using namespace std;
 
-class A
-{
+class A {
 private:
     char k[8];
 
@@ -23,25 +22,22 @@ public:
     virtual void Getk();
 };
 
-class B : public A
-{
-    // class B : public virutal A {
+class B : public A {
+// class B : public virutal A {
 public:
     char k[7];
     // void Getj(){}
     virtual void Getj() {}
 };
 
-class C : public B
-{
-    // class C : public virtual B {
+class C : public B {
+// class C : public virtual B {
 public:
     char k[1];
     virtual void Geti() {}
 };
 
-int main()
-{
+int main() {
     cout << "sizeof(A) : " << sizeof(A) << endl;
     cout << "sizeof(B) : " << sizeof(B) << endl;
     cout << "sizeof(C) : " << sizeof(C) << endl;

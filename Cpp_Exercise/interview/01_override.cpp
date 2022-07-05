@@ -48,14 +48,14 @@ public:
 
 int main() {
     C c(10);
-    cout << c.GetData() << endl;
-    cout << c.A::GetData() << endl;
-    cout << c.B::GetData() << endl;
-    cout << c.C::GetData() << endl;
-    cout << c.doGetData() << endl;
-    cout << c.A::doGetData() << endl;
-    cout << c.B::doGetData() << endl;
-    cout << c.C::doGetData() << endl;
+    cout << c.GetData() << endl;        // 1
+    cout << c.A::GetData() << endl;     // 1
+    cout << c.B::GetData() << endl;     // 1
+    cout << c.C::GetData() << endl;     // 1
+    cout << c.doGetData() << endl;      // 1
+    cout << c.A::doGetData() << endl;   // 0
+    cout << c.B::doGetData() << endl;   // 1
+    cout << c.C::doGetData() << endl;   // 1
 
     return 0;
 }

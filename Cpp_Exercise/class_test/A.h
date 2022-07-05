@@ -1,15 +1,15 @@
 #ifndef _A_H_
 #define _A_H_
 
-// #include "B.h"
+#include "B.h"
 
-class B;
+// class B;    // 前置声明
 
 class A {
 public:
     B *pb;
-    // A() = default;
-    // A(B *b);
+    A() = default;
+    A(B *b);
     void Show();
 };
 

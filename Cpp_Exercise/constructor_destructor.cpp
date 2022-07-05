@@ -16,12 +16,12 @@ private:
 
 MyClass::MyClass(int n)
 {
-    int* T = new int[n];
-    p = T;
+    p = new int[n];
+    // p = T;
     for(int i=0; i<n; i++)
     {
-        T[i]=i;
-        V.push_back(&(T[i]));
+        p[i]=i;
+        V.push_back(&(p[i]));
     }
 }
 
@@ -36,11 +36,13 @@ MyClass::~MyClass()
 //        delete V[i];
 }
 
-int main()
-{   
-    MyClass C(5);
-    return 0;
-}
+// int main()
+// {   
+//     MyClass C(5);
+    // MyClass *pp = new MyClass(10);
+    // delete pp;
+//     return 0;
+// }
 
 class A
 {
@@ -52,8 +54,12 @@ public:
 class B : public A
 {
 public:
+    B() {
+        cout << "B::B()" << endl;
+    }
     B(A &a) : _a(a)
     {
+        cout << "B::B(A&)" << endl;
     }
     ~B()
     {
@@ -64,11 +70,14 @@ private:
     A _a;
 };
 
-// int main(void)
-// {
-//     A a; //很简单，定义a的时候调用了一次构造函数
-//     B b(a);
-// }
+int main(void)
+{
+    A a; //很简单，定义a的时候调用了一次构造函数
+    // B b;
+    B b(a);
+
+    return 0;
+}
 
 // 总结：
 // 1. 析构函数和默认构造函数类似，派生类在析构时同样会调用基类的析构函数； 

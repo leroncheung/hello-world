@@ -1,9 +1,9 @@
 #ifndef _B_H_
 #define _B_H_
 
-#include "A.h"
+// #include "A.h"
 
-// class A;
+class A;
 
 class B {
 public:

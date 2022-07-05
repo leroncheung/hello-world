@@ -7,14 +7,14 @@ class B;
 
 class A {
 public:
-//	weak_ptr<B> pB;
-	shared_ptr<B> pB;
+	weak_ptr<B> pB;
+	// shared_ptr<B> pB;
 	
 	A() {
 		cout << "A::A()" << endl;
 	}
 	~A() {
-		cout << "~A::A()" << endl;
+		cout << "A::~A()" << endl;
 	}
 };
 
@@ -32,10 +32,10 @@ public:
 };
 
 int main() {
-	shared_ptr<A> pa = make_shared<A>();
 	shared_ptr<B> pb = make_shared<B>();
-	pa->pB = pb;
+	shared_ptr<A> pa = make_shared<A>();
 	pb->pA = pa;
+	pa->pB = pb;
 	
 	return 0;
 }

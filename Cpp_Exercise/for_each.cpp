@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-using namespace std::placeholders;
+
 using namespace std;
 
 ostream & print(ostream &os, const string& s, char c)
@@ -22,6 +22,6 @@ int main()
 
     ostringstream os1;
     // ostream不能拷贝，若希望传递给bind一个对象，而不拷贝它，则必须使用标准库提供的ref函数
-    for_each(words.begin(), words.end(), bind(print, ref(os1), _1, c));
+    for_each(words.begin(), words.end(), bind(print, ref(os1), placeholders::_1, c));
     cout << os1.str() << endl;
 }
